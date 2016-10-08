@@ -1,10 +1,9 @@
-//
-//  main.c
-//  Esercizio_2
-//
-//  Created by Nicolas Farabegoli on 05/10/16.
-//  Copyright © 2016 Nicolas Farabegoli. All rights reserved.
-//
+/*
+    Nome file: main.c
+    Nome: Nicolas Farabegoli
+    Data creazione: 06/10/2016
+    Data ultima modifica: 08/10/2016
+ */
 
 #include <stdio.h>
 

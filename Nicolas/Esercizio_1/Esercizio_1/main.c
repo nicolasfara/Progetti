@@ -1,14 +1,16 @@
-//
-//  main.c
-//  Esercizio1
-//
-//  Created by Nicolas Farabegoli on 03/10/16.
-//  Copyright © 2016 Nicolas Farabegoli. All rights reserved.
-//
+/*
+    Nome file: main.c
+    Nome: Nicolas Farabegoli
+    Creato: 03/10/2016
+    Ultima modifica: 08/10/2016
+ */
 
 #include <stdio.h>
 #include <limits.h> //file di include per val. Max e Min delle variabili
 #include <float.h>  //file include per utilizzare variabili float e sue definizioni
+
+//Questo programma dichiara i tipi di varaibili visti a lezione, visualizzando il valore min e max che possono assumere, occupazione in byte
+//Inoltre vengono utilizzati anche i qualificatori di tipo visti a lezione
 
 int main()
 {
@@ -28,7 +30,7 @@ int main()
     //Variabile per conteggio caratteri funzione printf
     int conteggioCaratteri = 0;
     
-    //NB: Tutte le tabulazioni (\t) all'interno dei printf servono ad avere un output ordinato ed incolonnato
+    //NB: Tutte le tabulazioni (\t) all'interno dei printf servono ad avere un output ordinato ed incolonnato (visualizzazione su MAC corretta, su Windows o altri poterbbe cambiare)
     
     
     /*  In questa printf i comandi di conversione utilizzati sono:
