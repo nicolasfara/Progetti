@@ -1,8 +1,8 @@
 /*
     Nome file: main.c
-    Nome: Nicolas Farabegoli
+    Autore: Nicolas Farabegoli
     Creato: 03/10/2016
-    Ultima modifica: 08/10/2016
+    Ultima modifica: 09/10/2016
  */
 
 #include <stdio.h>
@@ -37,7 +37,7 @@ int main()
      MODIFICATORE: (-) per allineamento a sinistra
      CAMPO MINIMO: campoMinimo 2 in quanto voglio mostrare solo due cifre
      SPECIFICA CONVERSIONE: (d) in quanto è un intero.
-     sizeof(..) restituisce un unsigned lond, utilizzo quindi come specificaConversione %lu (Considerazione valida per tutti i printf in cui viene richiamato sizeof(...)    */
+     sizeof(..) restituisce un unsigned long, utilizzo quindi come specificaConversione %lu (Considerazione valida per tutti i printf in cui viene richiamato sizeof(...)    */
     conteggioCaratteri = printf("TIPO VARIABILE: unsigned char \t VALORE VARIABILE: %-2d \t\t\t VAL. MIN: 0 \t\t\t\t\t\t VAL. MAX: %d \t\t\t\t\t\t BYTE OCCUPATI: %lu \t", varUChar, UCHAR_MAX, sizeof(unsigned char));
     
     //Scrivo da quanti caratteri è composto il printf

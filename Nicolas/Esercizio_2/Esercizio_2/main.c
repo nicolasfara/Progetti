@@ -1,17 +1,18 @@
 /*
     Nome file: main.c
-    Nome: Nicolas Farabegoli
+    Autore: Nicolas Farabegoli
     Data creazione: 06/10/2016
-    Data ultima modifica: 08/10/2016
+    Data ultima modifica: 09/10/2016
  */
 
 #include <stdio.h>
 
+//programma che utilizza tutti gli operatori visti a lezione
+
 int main()
 {
     //dichiarazione variabili
-    
-    //variabili utilizzate per gli operatori di assegnamento
+
     int primoOperando = 3;
     int secondoOperando = 2;
     int risultatoIntero = 0;
