@@ -2,7 +2,7 @@
  * Nome file: main.c
  * Autore: Nicolas Farabegoli
  * Data creazione: 10/10/2016
- * Versione: 1.0.0
+ * Versione: 1.2.0
  * Ultima modifica: 10/10/2016
  */
 
@@ -56,7 +56,7 @@ int main()
     {
         //Ora inserita è PM
         
-        oraInput -= 12; //porto l'orario nel formato da 24h a 12h
+        oraInput -= 12; //converto l'orario nel formato da 24h a 12h
         
         //
         while(oraInput > orePartenzaPM[cont])
