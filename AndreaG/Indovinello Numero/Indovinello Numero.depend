@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1475768842 source:c:\users\giulio\documents\c\indovinello numero\main.c
+	<stdio.h>
+	<stdlib.h>
+
