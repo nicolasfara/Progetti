@@ -13,12 +13,12 @@ Il programma deve visualizzare gli orari di partenza e di arrivo del primo volo 
 */
 int main()
 {
-    float partenze1[4]={8.00,9.43,11.19,12.47}; //Dichiaro e inizializzo 4 vettori per le partenze e gli ariivi, divisi in modo che la posizione della partenza sia uguale alla posizione dell'arrivo nell'altro vettore
-    float partenze2[4]={2.00,3.45,7.00,9.45};
-    float arrivi1[4]={10.16,11.52,1.31,3.00};
-    float arrivi2[4]={4.08,5.55,9.20,11.58};
+    float partenzeAM[4]={8.00,9.43,11.19,12.47}; //Dichiaro e inizializzo 4 vettori per le partenze e gli ariivi, divisi in modo che la posizione della partenza sia uguale alla posizione dell'arrivo nell'altro vettore
+    float partenzePM[4]={2.00,3.45,7.00,9.45};
+    float arriviAM[4]={10.16,11.52,1.31,3.00};
+    float arriviPM[4]={4.08,5.55,9.20,11.58};
 
-    float orario=0; //Variabili per la gestione di alcuni controlli
+    float orario; //Variabili per la gestione di alcuni controlli
     int i=0;
     char yn;
 
@@ -26,16 +26,16 @@ int main()
     {
         printf("Inserisci orario partenza, dividi le ore dai minuti tramite un .\n");
         fflush(stdin);//Libero il buffer poichè potrei avere problemi se il codice viene rieseguito
-        scanf("%[0-9.]",&orario);//Faccio inserire i dati
+        scanf("%f",&orario);//Faccio inserire i dati
 
-        if(orario>13)//Con questo if controllo se sono nella zona pm o am
+        if(orario>12)//Con questo if controllo se sono nella zona pm o am
         {
             orario-=12;//Per lavorare in formato 13 ore
             while(i<4)
             {
-                if(orario<partenze2[i]) //Controllo per capire quale volo è il successivo
+                if(orario<partenzePM[i]) //Controllo per capire quale volo è il successivo
                 {
-                    printf("Il prossimo volo e' in partenza alle ore:%.2f l'arrivo previsto e' per le ore: %.2f\n",partenze2[i],arrivi2[i]);
+                    printf("Il prossimo volo e' in partenza alle ore:%.2PM l'arrivo previsto e' per le ore: %.2fPM\n",partenzePM[i],arriviPM[i]);
                     i=4;
                 }
                 else //Nel caso il controllo non vada a buon fine, passo all'elemento successivo del vettore per fare di nuovo il controllo
@@ -49,9 +49,9 @@ int main()
         {
             while(i<4)
             {
-                if(orario<partenze1[i])
+                if(orario<partenzeAM[i])
                 {
-                    printf("Il prossimo volo e' in partenza alle ore:%.2f l'arrivo previsto e' per le ore: %.2f\n",partenze1[i],arrivi1[i]);
+                    printf("Il prossimo volo e' in partenza alle ore:%.2fAM l'arrivo previsto e' per le ore: %.2f\n",partenzeAM[i],arriviAM[i]);
                     i=4;
                 }
                 else
@@ -61,7 +61,7 @@ int main()
             }
             i=0;
         }
-        printf("Vuoi reiniziare?(y/*): \n");//Richiedo se vuole essere rieseguito il programma
+        printf("Vuoi riniziare?(y/*): \n");//Richiedo se vuole essere rieseguito il programma
         fflush(stdin);//Libero sempre il buffer per evitare problemi di letture false
         scanf("%c",&yn);
         system("cls");

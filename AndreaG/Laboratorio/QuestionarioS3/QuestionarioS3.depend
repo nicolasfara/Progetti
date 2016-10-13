@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1476370077 source:c:\users\giulio\documents\github\progetti\andreag\laboratorio\questionarios3\main.c
+	<stdio.h>
+	<stdlib.h>
+
