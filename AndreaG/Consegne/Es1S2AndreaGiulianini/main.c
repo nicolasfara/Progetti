@@ -28,7 +28,7 @@ int main()
         fflush(stdin);//Libero il buffer poichè potrei avere problemi se il codice viene rieseguito
         scanf("%[0-9.]",&orario);//Faccio inserire i dati
 
-        if(orario>12)//Con questo if controllo se sono nella zona pm o am
+        if(orario>13)//Con questo if controllo se sono nella zona pm o am
         {
             orario-=12;//Per lavorare in formato 13 ore
             while(i<4)
@@ -64,6 +64,7 @@ int main()
         printf("Vuoi reiniziare?(y/*): \n");//Richiedo se vuole essere rieseguito il programma
         fflush(stdin);//Libero sempre il buffer per evitare problemi di letture false
         scanf("%c",&yn);
+        system("cls");
 
     }while(yn=='y'|| yn=='Y'); //Condizione dell'while
 
