@@ -137,5 +137,91 @@ int main()
     printf("Somma tra ris e (--var = %d), ris = %d\t(var è decrementata prima del calcolo)\n\n", var, ris);
     //In poche parole, ++var l'incremento della variabile avviene prima di tutto quello presente nell'espressione, a differenza di var++ dove l'incremento è l'ultima cosa
 
-    return 0;//Segnalo al O.S che il programma si è concluso correttamente
+    printf("Operazioni Relazionali\n\n");
+
+    printf("Confrontiamo 2 numeri in ingresso\n");
+    scanf("%f %f", &pNumero, &sNumero);
+
+    //Utilizzo operatori maggiore, minore e uguale
+    if (pNumero > sNumero)
+    {
+        printf("%.2f è maggiore di %.2f\n", pNumero, sNumero);
+    }
+    else if(pNumero < sNumero)
+    {
+        printf("%.2f è minore di %.2f\n", pNumero, sNumero);
+    }
+    else if (pNumero == sNumero)
+    {
+        printf("%.2f è uguale a %.2f\n", pNumero, sNumero);
+    }
+    else if (pNumero != sNumero)
+    {
+        printf("%.2f è diverso da %.2f\n", pNumero, sNumero);
+    }
+
+    //operatori con maggiore uguale e minore uguale
+    if (pNumero >= sNumero)
+    {
+        printf("La differenza tra %.2f e %.2f e\' maggiore o uguale a 0, differenza = %.2f\n", pNumero, sNumero, pNumero - sNumero);
+    }
+    else if (pNumero <= sNumero)
+    {
+        printf("La differenza tra %.2f e %.2f e\' minore o uguale a 0, differenza = %.2f\n\n", pNumero, sNumero, pNumero - sNumero);
+    }
+
+
+    printf("Operatori Logici\n\n");
+
+    //Equivale a chiedersi se inputPrimo è diverso da 0
+    if (!pNumero)
+    {
+        printf("%.2f è diverso da 0\n", pNumero);
+    }
+
+    //Con && (AND logico) si devono verificare entrambe le condizioni per eseguire il body dell'if
+    if (!pNumero && !sNumero)
+    {
+        printf("Sia %.2f che %.2f sono diversi da 0\n", pNumero, sNumero);
+    }
+
+    printf("Inserisci due numeri: (prova anche con uno negativo)\n");
+    scanf("%f %f", &pNumero, &sNumero);
+
+    //Con || (OR logico) si deve verificare almeno una condizione per eseguire il body dell'if
+    if (pNumero < 0 || sNumero < 0)
+    {
+        printf("Hai inserito almeno un numero negativo\n\n");
+    }
+    else if (pNumero > 0 || sNumero >0)
+    {
+        printf("Hai inserito almeno un numero positivo\n\n");
+    }
+
+    printf("Operatori Bitwise \n\n");
+
+    ris = pNumero & sNumero;
+    printf("AND tra il pNumero e sNumero, = %d\n", ris);
+
+    ris = pNumero | sNumero;
+    printf("OR tra il pNumero e sNumero, = %d\n", ris);
+
+    ris = ~ pNumero;
+    printf("Complemento a 1 di pNumero, = %d\n", ris);
+
+    ris = pNumero ^ sNumero;
+    printf("XOR tra pNumero e sNumero, = %d\n", ris);
+
+    ris = pNumero >> 1;
+    printf("Shift a destra di pNumero di 1 posizione, = %d\n", ris);
+
+    ris = pNumero << 1;
+    printf("Shift a sinistra di pNumero di 1 posizione, = %d\n\n", ris);
+
+    printf("Operatore Ternario\n\n");
+
+    pNumero > 5 ? printf("pNumero > 5\n\n") : printf("pNumero < 5\n\n");
+
+    //segnalo al S.O. che il programma è terminato correttamente
+    return 0;
 }
