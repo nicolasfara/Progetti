@@ -1,86 +1,72 @@
 /*
-Nome: Andrea Giulianini
-Versione: 1.0
-Data Inizio: 17/10/2016
-Data Fine: 17/10/2016
-*/
+    Nome file: main.c
+    Nome: Andrea Giulianini
+    Creato: 12/10/2016
+    Ultima modifica: 12/10/2016
+ */
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
-//Software per creare una tavola pitagorica usando i costrutti for e while, gestendo gli input dagli utenti
+
+/*
+Scopo:scrivere un programma che chieda all'utente di immettere l'orario di arrivo all'aeroporto (espresso in ore e minuti utilizzando il formato a 24 ore).
+Il programma deve visualizzare gli orari di partenza e di arrivo del primo volo che sarà possibile prendere (quello il cui orario di partenza è immediatamente successivo rispetto a quello immesso dall'utente).
+*/
 int main()
 {
-    unsigned int righe,colonne; //Inizializzo variabili che mi tonano utili
-    colonne=righe=-1; //Faccio questo assegnamento per regolarmi poi con la gestione degli input
+    float partenzeAM[4]={8.00,9.43,11.19,12.47}; //Dichiaro e inizializzo 4 vettori per le partenze e gli ariivi, divisi in modo che la posizione della partenza sia uguale alla posizione dell'arrivo nell'altro vettore
+    float partenzePM[4]={2.00,3.45,7.00,9.45};
+    float arriviAM[4]={10.16,11.52,1.31,3.00};
+    float arriviPM[4]={4.08,5.55,9.20,11.58};
 
-    printf("Inserimento 2 numeri interi divisi con uno spazio: ");
-    scanf("%u %u",&righe, &colonne);
-    fflush(stdin);
+    float orario; //Variabili per la gestione di alcuni controlli
+    int i=0;
+    char yn;
 
-    //Tavola fatto con il for della moltiplicazione e somma
-    if(righe>=0 && righe <= UINT_MAX && colonne>=0 && colonne<= UINT_MAX && colonne != -1 && righe != -1) //Qui gestisco che l'utente non abbia messo parametri sbagliati, scanf si blocca appena incontra qualcosa che non sia un'intero
+    do  //Do-while è un ciclo iterativo che mi permette di poter eseguire un blocco di istruzioni una volta, e rieseguirlo solo se una certa condizione è verificata
     {
-        unsigned int i, j;//Servono per fare la moltiplicazione tra righe e colonne
-        puts("Tavola Pitagorica fatta dal for(moltiplicazione)");
-        for (i=1; i <=righe  ; i++)//Con questo for mi sposto per le righe
+        printf("Inserisci orario partenza, dividi le ore dai minuti tramite un .\n");
+        fflush(stdin);//Libero il buffer poichè potrei avere problemi se il codice viene rieseguito
+        scanf("%f",&orario);//Faccio inserire i dati
+
+        if(orario>12)//Con questo if controllo se sono nella zona pm o am
         {
-            for (j=1; j <= colonne ; j++)//Con questo per le colonne
+            orario-=12;//Per lavorare in formato 13 ore
+            while(i<4)
             {
-                printf("%u\t", (i*j));
+                if(orario<partenzePM[i]) //Controllo per capire quale volo è il successivo
+                {
+                    printf("Il prossimo volo e' in partenza alle ore:%.2PM l'arrivo previsto e' per le ore: %.2fPM\n",partenzePM[i],arriviPM[i]);
+                    i=4;
+                }
+                else //Nel caso il controllo non vada a buon fine, passo all'elemento successivo del vettore per fare di nuovo il controllo
+                {
+                    i++;
+                }
             }
-            printf("\n");
+            i=0;
         }
-
-        puts("Tavola Pitagorica fatta dal for(somma)");
-        for (i=0; i <=righe  ; i++)//La differenze tra la somma e la moltiplicazione di farle partire da 1(moltiplicazione) e 0(somma) è solo per evitare che nella moltiplicazione avvenga una riga e una colonna di soli 0
+        else
         {
-            for (j=0; j <= colonne ; j++)
+            while(i<4)
             {
-                printf("%u\t", (i+j));
+                if(orario<partenzeAM[i])
+                {
+                    printf("Il prossimo volo e' in partenza alle ore:%.2fAM l'arrivo previsto e' per le ore: %.2f\n",partenzeAM[i],arriviAM[i]);
+                    i=4;
+                }
+                else
+                {
+                    i++;
+                }
             }
-            printf("\n");
+            i=0;
         }
+        printf("Vuoi riniziare?(y/*): \n");//Richiedo se vuole essere rieseguito il programma
+        fflush(stdin);//Libero sempre il buffer per evitare problemi di letture false
+        scanf("%c",&yn);
+        system("cls");
 
-        puts("Tavola pitagorica con while(moltiplicazione)");
-        i = 1;
-        while(i <= colonne)//Utilizzo questo while per scorrere nelle colonne
-        {
-            j = 1;
-            while(j <= righe)//Questo per le righe
-            { //Utilizziamo la funzione while per la tabella della moltiplicazione.
-                printf("%d\t", i * j);
-                j++;
-            }
-            printf("\n");
-            i++;
-        }
+    }while(yn=='y'|| yn=='Y'); //Condizione dell'while
 
-        puts("Tavola pitagorica con while(somma)");
-        i = 0;
-        while(i <= colonne)
-        {
-            j = 0;
-            while(j <= righe)
-            { //Utilizziamo la funzione while per la tabella della somma.
-                printf("%d\t", i + j);
-                j++;
-            }
-            printf("\n");
-            i++;
-        }
-    }
-    else
-    {
-        printf("Non hai inserito caratteri validi\n");
-    }
-
-
-
-
-
-
-
-
-
-    return 0;
+return 0;
 }
