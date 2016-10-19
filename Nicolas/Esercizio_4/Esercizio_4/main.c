@@ -2,7 +2,7 @@
  Nome file: main.c
  Autore: Nicolas Farabegoli
  Data creazione: 06/10/2016
- Data ultima modifica: 09/10/2016
+ Data ultima modifica: 16/10/2016
  */
 
 #include <stdio.h>
@@ -236,27 +236,42 @@ int main()
     
     printf("**** OPERATORI BITWISE ****\n\n");
     
+    //Operatore AND bit a bit
     risultatoIntero = primoOperando & secondoOperando;
     printf("AND tra primoOperando e secondoOperando, = %d\n", risultatoIntero);
     
+    //Operatore OR bit a bit
     risultatoIntero = primoOperando | secondoOperando;
     printf("OR tra primoOperando e secondoOperando, = %d\n", risultatoIntero);
     
+    //Operatore Complemento a 1
     risultatoIntero = ~ primoOperando;
     printf("Complemento a 1 di primoOperando, = %d\n", risultatoIntero);
     
+    //Operatore XOR bit a bit
     risultatoIntero = primoOperando ^ secondoOperando;
     printf("XOR tra primoOperando e secondoOperando, = %d\n", risultatoIntero);
     
+    //Operatore AND bit a bit
     risultatoIntero = primoOperando >> 1;
     printf("Shift a destra di primoOperando di 1 posizione, = %d\n", risultatoIntero);
     
+    //Operatore AND bit a bit
     risultatoIntero = primoOperando << 1;
     printf("Shift a sinistra di primoOperando di 1 posizione, = %d\n\n", risultatoIntero);
     
     printf("**** OPERATORE TERNARIO ****\n\n");
     
     inputPrimo > 5 ? printf("inputPrimo > 5\n\n") : printf("inputPrimo < 5\n\n");
+    
+    printf("**** CAST ****\n\n");
+    
+    float varFloat = 394.2874;
+    printf("Cast su un numero float per farlo diventare intero, variabile float: %.3f\n", varFloat);
+    
+    primoOperando = (int)varFloat;
+    
+    printf("La variabile float è stata traformata in int ed ha come valore: %d\n", primoOperando);
     
     
     /*N.B: la visualizzazione della variabile varID alla funzione printf risulta essere sempre incrementata o decrementata,
