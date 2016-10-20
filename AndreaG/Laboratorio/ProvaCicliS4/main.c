@@ -87,9 +87,33 @@ int main()
         }
         if(h==0)
         {
-            printf("%d   ",cont);
+            printf("%d   \n",cont);
         }
         h=0;
     }
+
+    //Divisione Binaria
+    puts("Inserire numero");
+    int num,l;
+    l=0;
+    int array[10];
+    scanf("%d",&num);
+    while(l<10)
+    {
+        if((num%2)!=0)
+            array[l]=1;
+        if((num%2)==0)
+            array[l]=0;
+        num=(num/2);
+        l++;
+    }
+    for(int j=9;j>=0;j--)
+    {
+        printf("%d",array[j]);
+    }
+
+
+
+
 return 0;
 }
