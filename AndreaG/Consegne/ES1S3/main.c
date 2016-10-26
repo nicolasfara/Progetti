@@ -1,8 +1,9 @@
 /*
     Nome file: main.c
     Nome: Andrea Giulianini
+    Nome es:Es2S2
     Creato: 12/10/2016
-    Ultima modifica: 12/10/2016
+    Ultima modifica: 25/10/2016
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +34,7 @@ int main()
             orario-=12;//Per lavorare in formato 13 ore
             while(i<4)
             {
-                if(orario<partenzePM[i]) //Controllo per capire quale volo è il successivo
+                if(orario<=partenzePM[i]) //Controllo per capire quale volo è il successivo
                 {
                     printf("Il prossimo volo e' in partenza alle ore:%.2PM l'arrivo previsto e' per le ore: %.2fPM\n",partenzePM[i],arriviPM[i]);
                     i=4;
@@ -42,6 +43,11 @@ int main()
                 {
                     i++;
                 }
+                if(orario>partenzePM[3])
+                {
+                    printf("Il prossimo volo e' in partenza alle ore:%.2fAM l'arrivo previsto e' per le ore: %.2fAM\n",partenzeAM[0],arriviAM[0]);
+                    i=4;
+                }
             }
             i=0;
         }
@@ -49,7 +55,7 @@ int main()
         {
             while(i<4)
             {
-                if(orario<partenzeAM[i])
+                if(orario<=partenzeAM[i])
                 {
                     printf("Il prossimo volo e' in partenza alle ore:%.2fAM l'arrivo previsto e' per le ore: %.2f\n",partenzeAM[i],arriviAM[i]);
                     i=4;
