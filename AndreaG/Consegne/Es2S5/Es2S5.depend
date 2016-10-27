@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1477562477 source:c:\users\giulio\documents\github\progetti\andreag\consegne\es2s5\main.c
+1477614381 source:c:\users\giulio\documents\github\progetti\andreag\consegne\es2s5\main.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
 

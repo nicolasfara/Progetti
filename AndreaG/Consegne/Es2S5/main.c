@@ -2,84 +2,82 @@
 Nome: Andrea Giulianini
 Nome es: Es2S5
 Data Inizio:26/10/2016
-Data Fine:27/10/2016
+Data Fine:28/10/2016
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> //Libreria per usare la funzione tolower
 //Lo scopo del programma è quello di trovare una data in comune tra le due colleghi, comparerò 2 vettori tra di loro, quando 2 valori combacieranno saranno mandati in output
 
 int main()
 {
-/*
-    puts("Si considera solo un mese composto da 31 giorni\n Basta inserire il numero del giorno libero per fare l'incontro\n Usare i caratteri se si vuole interrompere l'inserimento di date per un collega oppure 0\n (Es:c,c4,0 vanno bene per uscire, 3c non va bene poichè lo considero missclick, prendendo buono il primo numero\n I giorni vanno messi in ordine crescente)");
-    int col[31]={0};
-    int col1[31]={0};
-    int cont=0;
-    int cont1=0;
-    int check;
-    do //Richiesta valori per il primo collega
+    puts("Inserire solo date in maniera crescente, e solo numeri compresi tra 1 e 31, nel caso non lo faceste il programma gestisce tutto");
+    int collega[2][31]={0};
+    int i=0;
+    char check;
+    do//Ciclo per l'inserimento dei valori per il primo collega
     {
-        puts("Inserire data primo collega");
-        check=scanf("%d",&col[cont]); //Creazione variabile di controllo per verificare che i valori siano corretti
+        puts("Valori collega uno:");
+        scanf("%d",&collega[0][i]);
         fflush(stdin);
-        while(col[cont]>31||col[cont]<0)//Verifica inserimetno se sbagliata cosa fa
+        while((collega[0][i]<=0||collega[0][i]>31)&&i>=0&&i<1)//Controllo particolare sul primo valore del vettore di riga 0
         {
-            puts("Valore non valido, rinserire:");
-            check=scanf("%d",&col[cont]);
-            fflush(stdin);
-            for(int i=0;i<=30;i++)
-            {
-                if(col[cont]==col[i])
-                {
-                    puts("Valore non valido, rinserire:");
-                    check=scanf("%d",&col[cont]);
-                    fflush(stdin);
-                }
-            }
-        }
-        cont++;
-    }while(check!=0 && cont<=31 && col[cont-1]!=0);//Altro controllo per verificare che i valori siano conformi
-    col[cont-1]=0;
-
-    cont=0;
-    do//Richiesta secondo collega analoga a quella di prima
-    {
-        puts("Inserire data secondo collega");
-        check=scanf("%d",&col1[cont]);
-        fflush(stdin);
-        if(col1[cont]>31||col1[cont]<0)
-        {
-            puts("Valore non valido, rinserire:");
-            check=scanf("%d",&col1[cont]);
+            puts("Valori non corretti, rinserire:");
+            scanf("%d",&collega[0][i]);
             fflush(stdin);
         }
-        for(int i=0;i<=30;i++)
-            {
-                if(col1[cont]==col1[i])
-                {
-                    puts("Valore non valido, rinserire:");
-                    check=scanf("%d",&col[cont]);
-                    fflush(stdin);
-                }
-            }
-        cont++;
-    }while((check!=0) && cont<=31&& col1[cont-1]!=0);
-    col1[cont-1]=0;
-
-    puts("Date disponibili:\n"); //Lo scopo dei cicli è quello di confrontare i due vettori per intero
-    for (cont=0; cont<=30; cont++)//Con questo for mi sposto per le date del primo collega
+        while(i>=1&&i<=31&&collega[0][i]<=collega[0][i-1]||(collega[0][i]<=0||collega[0][i]>31))//Controllo generale per tutto il resto del vettore usclusa la prima posizione
         {
-            for (cont1=0; cont1<=30; cont1++)//Con questo per le date del secondo
-            {
-                if(col[cont]==col1[cont1]&&col[cont]!=0)
-                {
-                    printf("%d\t",col[cont]);
-                }
-            }
+            puts("Valori non corretti, rinserire:");
+            scanf("%d",&collega[0][i]);
+            fflush(stdin);
         }
-*/
-    int collega[31];
-    int collega1[31];
+        fflush(stdin);
+        puts("Vuoi andare al prossimo collega?(n o N per rimanere, qualsiasi altro carattere per uscire)");//Richiesta all'utente se vuole passare al collega dopo
+        scanf("%c",&check);
+        fflush(stdin);
+        tolower(check);
+        i++;
+    }while(i<31 && check == 'n');//Effetivo controllo per uscire
+
+    i=0;
+    do//Ciclo per il secondo collega identi a prima
+    {
+        puts("Valori collega due:");
+        scanf("%d",&collega[1][i]);
+        fflush(stdin);
+        while((collega[1][i]<=0||collega[1][i]>31)&&i>=0&&i<1)
+        {
+            puts("Valori non corretti, rinserire:");
+            scanf("%d",&collega[1][i]);
+            fflush(stdin);
+        }
+        while(i>=1&&i<=31&&collega[1][i]<=collega[1][i-1]||(collega[1][i]<=0||collega[1][i]>31))
+        {
+            puts("Valori non corretti, rinserire:");
+            scanf("%d",&collega[1][i]);
+            fflush(stdin);
+        }
+        fflush(stdin);
+        puts("Vuoi andare a verificare le date in comune?(n o N per rimanere, qualsiasi altro carattere per uscire)");
+        scanf("%c",&check);
+        fflush(stdin);
+        tolower(check);
+        i++;
+    }while(i<31 && check == 'n');
+
+
+    puts("Date in comune:");
+    for(int l=0;l<31;l++)//I due cicli annidati servono per fare il confronto fra i valori del vettore all'suo interno
+    {
+        for(int k=0;k<31;k++)
+        {
+            if(collega[0][l]==collega[1][k]&&collega[0][l]!=0)
+                printf("%d\n",collega[0][l]);
+        }
+    }
+
+
 
     return 0;
 }
