@@ -96,7 +96,7 @@ int main()
     puts("Inserire numero");
     int num,l;
     l=0;
-    int array[10];
+    int array[20];
     scanf("%d",&num);
     while(l<10)
     {
