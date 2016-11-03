@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1478182832 source:c:\users\giulio\documents\github\progetti\andreag\laboratorio\es2matricis6\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
