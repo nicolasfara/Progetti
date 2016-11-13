@@ -2,7 +2,7 @@
  * Autore: Nicolas Farabegoli
  * Data Creazione: 8/11/2016
  * Ultima modifica: 13/11/2016
- * Versione: 1.4.0
+ * Versione: 1.4.1
  */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@ Il programma deve sostituire ogni occorrenza della seconda parola nella prima pa
  */
 
 //PROTOTIPI FUNZIONI
-unsigned int lenghtString(char *string);
+unsigned int lenghtString(const char *string);
 void readString(char *inputString, unsigned int elements);
 
 int main()
@@ -53,7 +53,7 @@ int main()
             ptrStr = strstr(str1, str2);
         }
         //Stampo il vettore modificato
-        printf("Sostituzione: %s\n", str1);
+        printf("Sostituzione: %s\n\n", str1);
     }
     /******* FINE UTILIZZO FUNZIONI STRING.H ********/
 
@@ -73,38 +73,50 @@ int main()
     {
         do
         {
-            //azzero variabile per ciclo successivo
-            cont = 0;
-            //Ciclo che scorre tutti i caratteri della prima stringa
-            for (unsigned int i = 0; i < lenghtString(str1); i++)
+            //Se str2 è composta da solo un carattere sostituisco con *
+            if((lenghtString(str2) - 1) == 1)
             {
-                //Verifico che il primo carattere i-esimo sia uguale al primo di str2
-                if(str1[i] == str2[0])
-                {
-                    //Verifico che anche i successivi sia uguali
-                    for (unsigned int c = 1; c < lenghtString(str2) - 1; c++)
-                    {
-                        if (str1[i + c] == str2[c])
-                            cont++; //Incremento variabile se sono uguali
-                        else
-                            c = lenghtString(str2) + 1; //Altrimenti esco dal for
-                    }
-                    //Registro nel puntatore l'indirizzo di memoria di str1 nella posizione i-esima
-                    ptrStr = &str1[i];
-                    //Esco dal for solo se è stata trovata corrispondenza di str2 in str1
-                    if (cont == lenghtString(str2) - 2)
-                        i = lenghtString(str1) + 1;
-                }
+                //Cerco corrispondenza tra le due stringhe e se si verifica sostituisco in str1 il carattere *
+                for(unsigned int i = 0; i < lenghtString(str1); i++)
+                    if(str1[i] == str2[0])
+                        str1[i] = '*';
             }
-            //Se la variabile ci conteggio è uguale al numero di elementi di str2 - 2 poichè il primo elemento era già stato conforntato e non consideriamo il \0
-            if (cont == lenghtString(str2) - 2)
+            else
             {
-                //Inserisco il carattere * al puntatore nella posizione 0 (che a sua volta lo sostituisce in str1)
-                ptrStr[0] = '*';
-                //Shifto il vettore str1 agendo sul puntatore ptrStr
+                //azzero variabile per ciclo successivo
+                cont = 0;
+                //Ciclo che scorre tutti i caratteri della prima stringa
                 for (unsigned int i = 0; i < lenghtString(str1); i++)
-                    ptrStr[i + 1] = ptrStr[lenghtString(str2) - 1 + i];
-            }
+                {
+                    //Verifico che il primo carattere i-esimo sia uguale al primo di str2
+                    if(str1[i] == str2[0])
+                    {
+                        //Verifico che anche i successivi sia uguali
+                        for (unsigned int c = 1; c < lenghtString(str2) - 1; c++)
+                        {
+                            if (str1[i + c] == str2[c])
+                                cont++; //Incremento variabile se sono uguali
+                            else
+                                c = lenghtString(str2) + 1; //Altrimenti esco dal for
+                        }
+                        //Registro nel puntatore l'indirizzo di memoria di str1 nella posizione i-esima
+                        ptrStr = &str1[i];
+                        //Esco dal for solo se è stata trovata corrispondenza di str2 in str1
+                        if (cont == lenghtString(str2) - 2)
+                            i = lenghtString(str1) + 1;
+                    }
+                }
+                //Se la variabile ci conteggio è uguale al numero di elementi di str2 - 2 poichè il primo elemento era già stato conforntato e non consideriamo il \0
+                if (cont == lenghtString(str2) - 2)
+                {
+                    //Inserisco il carattere * al puntatore nella posizione 0 (che a sua volta lo sostituisce in str1)
+                    ptrStr[0] = '*';
+                    //Shifto il vettore str1 agendo sul puntatore ptrStr
+                    for (unsigned int i = 0; i < lenghtString(str1); i++)
+                        ptrStr[i + 1] = ptrStr[lenghtString(str2) - 1 + i];
+                }
+            }//fine else
+
 
         } while(cont != 0); //Se no viene trovata corrispondenza tra str1 e str2 viene ripetuto il ciclo
 
@@ -120,7 +132,7 @@ int main()
 /// @Input: pointer to string
 /// @Output: number of elements in to the string (including '\0')
 /// @Description: the function return the number of the elements in to the string
-unsigned int lenghtString(char *string)
+unsigned int lenghtString(const char *string)
 {
     unsigned int lenght = 0;
     //incremento il conteggio fino a che non incontro il terminatore
@@ -153,7 +165,6 @@ void readString(char *inputString, unsigned int elements)
 
         //Verifico che siano inserite solo lettere
         for (unsigned int set = 0; set < lenghtString(inputString) - 1; set++)
-        {
             //Controllo che non vengano inseriti caratteri diversi da lettere
             if (!isalpha(inputString[set]))
             {
@@ -161,7 +172,6 @@ void readString(char *inputString, unsigned int elements)
                 printf("Hai inserito un carattere non valido\n");
                 set = lenghtString(inputString) + 1; //esco dal for per non eseguire cicli inutili
             }
-        }
 
     }while(pass > 0);
 }//END READSTRING
