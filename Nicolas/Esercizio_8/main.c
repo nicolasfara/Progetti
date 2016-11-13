@@ -1,8 +1,8 @@
 /*
  * Autore: Nicolas Farabegoli
  * Data creazione: 26/10/2016
- * Data ultima modifica: 26/10/2016
- * Versione: 1.0.0
+ * Data ultima modifica: 27/10/2016
+ * Versione: 1.0.3
  */
 
 #include <stdio.h>
@@ -58,10 +58,10 @@ int main()
                 printf("Giorno non corretto, inserisci nuovamente.\n");
                 elemFirst--;
             }
-            //eseguo l'else if solo se il numero inserito è compreso tra 1 - 31 e diverso da 0
+            //eseguo l'else if solo se il numero inserito ï¿½ compreso tra 1 - 31 e diverso da 0
             else if(inputDay != 0 && (inputDay > 0 || inputDay <32))
             {
-                //Controllo che il dato inserito non sia già stato inserito oppure sia minore del precedente
+                //Controllo che il dato inserito non sia giï¿½ stato inserito oppure sia minore del precedente
                 //Controllo anche che elemSec sia > 1 per inserire il primo dato, altrimenti veniva controllato il vettore con indice -1
                 //in questo modo controllo a partire dal secondo inserimento
                 if(primoCollega[elemFirst - 1] >= inputDay && elemFirst >= 1)
@@ -76,8 +76,8 @@ int main()
                     primoCollega[elemFirst] = inputDay;
                 }
             }
-            /*Se il numero in input è 0 non deve essere registrato nel vettore,
-              ma anche se il controllo sulla scanf è 0;
+            /*Se il numero in input ï¿½ 0 non deve essere registrato nel vettore,
+              ma anche se il controllo sulla scanf ï¿½ 0;
               di conseguenza non incremento il numero degli elementi*/
             if(inputDay != 0 || check == 0)
                 elemFirst++;
@@ -103,10 +103,10 @@ int main()
                 printf("Giorno non corretto, inserisci nuovamente.\n");
                 elemSec--;
             }
-            //eseguo l'else if solo se il numero inserito è compreso tra 1 - 31 e diverso da 0
+            //eseguo l'else if solo se il numero inserito ï¿½ compreso tra 1 - 31 e diverso da 0
             else if(inputDay != 0 && (inputDay > 0 || inputDay <32))
             {
-                //Controllo che il dato inserito non sia già stato inserito oppure sia minore del precedente
+                //Controllo che il dato inserito non sia giï¿½ stato inserito oppure sia minore del precedente
                 //Controllo anche che elemSec sia > 1 per inserire il primo dato, altrimenti veniva controllato il vettore con indice -1
                 //in questo modo controllo a partire dal secondo inserimento
                 if(secondoCollega[elemSec - 1] >= inputDay && elemSec >= 1)
@@ -121,13 +121,13 @@ int main()
                     secondoCollega[elemSec] = inputDay;
                 }
             }
-            /*Se il numero in input è 0 non deve essere registrato nel vettore,
-              ma anche se il controllo sulla scanf è 0;
+            /*Se il numero in input ï¿½ 0 non deve essere registrato nel vettore,
+              ma anche se il controllo sulla scanf ï¿½ 0;
               di conseguenza non incremento il numero degli elementi*/
             if(inputDay != 0 || check == 0)
                 elemSec++;
         }
-        while(inputDay != 0 || check == 0); //Ripeto finchè inputDay è divero da 0 e finchè check è 0
+        while(inputDay != 0 || check == 0); //Ripeto finchï¿½ inputDay ï¿½ divero da 0 e finchï¿½ check ï¿½ 0
         //Fine acquisiszione UTENTE 2
         //**********************************************************************************************
 
@@ -164,7 +164,7 @@ int main()
         restart = toupper(restart); //Lo converto in maiuscolo
 
     }
-    while(restart == 'Y'); //Ripeto se il carattere inserito è 'Y'
+    while(restart == 'Y'); //Ripeto se il carattere inserito ï¿½ 'Y'
 
     return 0;
 }

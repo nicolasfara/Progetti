@@ -1,8 +1,8 @@
 /*
  * Autore: Nicolas Farabegoli
  * Data creazione: 24/10/2016
- * Data ultima modifica: 24/10/2016
- * Versione: 1.0.0
+ * Data ultima modifica: 27/10/2016
+ * Versione: 1.0.3
  */
 
 #include <stdio.h>
