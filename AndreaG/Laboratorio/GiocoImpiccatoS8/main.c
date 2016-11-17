@@ -25,14 +25,15 @@ int main()
   {
     puts("");
     scanf("%c",&ch);
+    while ( getchar() != '\n' );
     for(i=0;i<7+1;i++)
     {
       if(stringa[i]==ch)
         codificata[i]=ch;
     }
-    printf("\n%s\nCrediti rimasti:%d",codificata,crediti);
+    printf("\n%s\nCrediti rimasti:%d\t",codificata,crediti);
     token=0;
-    for(i=0;i<7;i++)
+    for(i=0;i<6;i++)
     {
       if(codificata[i]!='+'&& codificata[i]!='-')
         token++;
@@ -42,7 +43,7 @@ int main()
       puts("Hai vinto");
       return 0;
     }
-    crediti--;
+    crediti=crediti-1;
   }
   if(crediti<0)
     puts("Hai perso");
