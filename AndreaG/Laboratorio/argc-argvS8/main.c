@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, int *argv[])
+int main(int argc, char *argv[])
 {
-  printf("%d\n",argc);
+  printf("%d\n",argc-1);
   printf("%d\n",*argv);
   return 0;
 }
